@@ -40,4 +40,5 @@ public class CategoryController {
         model.addAttribute("products", products);
         return "products";
     }
+
 }
