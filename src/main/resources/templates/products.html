@@ -18,7 +18,11 @@
                 <div class="card-body">
                     <h4 class="card-title" th:text="${product.name}">Product Name</h4>
                     <p class="card-text" th:text="${product.description}">Product Description</p>
-                    <a th:href="@{/products/{id}(id=${product.id})}" class="btn btn-primary">Details</a>
+                    <p class="card-text" th:text="${product.price}">Product Price</p>
+                    <form th:action="@{/products/delete}" method="post">
+                        <input type="hidden" name="id" th:value="${product.id}" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
