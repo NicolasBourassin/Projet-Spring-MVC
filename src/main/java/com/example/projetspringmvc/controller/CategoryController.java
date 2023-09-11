@@ -35,14 +35,9 @@ public class CategoryController {
 
     @PostMapping("/products/category")
     public String displayProductsByCategory(@RequestParam("categoryId") Long categoryId, Model model) throws Exception {
-        // Retrieve the category by ID
         Category category = categoryService.fetchById(categoryId);
-
-        // Retrieve all products belonging to the category
         List<Product> products = productService.findByCategory(category);
-
-        // Pass the products to the Thymeleaf template
         model.addAttribute("products", products);
-        return "products"; // Redirect to the products template to display the products
+        return "products";
     }
 }
