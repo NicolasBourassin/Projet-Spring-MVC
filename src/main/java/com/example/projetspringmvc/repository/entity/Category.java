@@ -8,14 +8,14 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name="category")
+@Table(name="categories")
 public class Category{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(name = "names", unique=true)
     private String name;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "category")
     private List<Product> product;
 
     public Category() {
