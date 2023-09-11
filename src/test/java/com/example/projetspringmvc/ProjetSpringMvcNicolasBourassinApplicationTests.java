@@ -1,4 +1,4 @@
-package com.example.projetspringmvc_nicolasbourassin;
+package com.example.projetspringmvc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
