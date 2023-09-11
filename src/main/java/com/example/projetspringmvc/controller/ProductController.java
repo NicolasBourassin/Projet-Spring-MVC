@@ -43,11 +43,17 @@ public class ProductController {
     @PostMapping("/products/add")
     public String addProduct(@RequestParam("name") String name,
                              @RequestParam("price") Float price,
-                             @RequestParam("description") String description) {
+                             @RequestParam("description") String description,
+                             @RequestParam("categoryId") Long categoryId) {
         Product product = new Product();
         product.setName(name);
         product.setPrice(price);
         product.setDescription(description);
+        try {
+            product.setCategory(categoryService.fetchById(categoryId));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         productService.save(product);
         return "redirect:/products";
     }
