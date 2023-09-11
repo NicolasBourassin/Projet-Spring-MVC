@@ -34,6 +34,19 @@ public class CategoryController {
         return "categories";
     }
 
+    @GetMapping("/categories/add")
+    public String showAddCategoryForm(Model model) {
+        return "add-categories";
+    }
+
+    @PostMapping("/categories/add")
+    public String addCategory(@RequestParam("name") String name) {
+        Category category = new Category();
+        category.setName(name);
+        categoryService.save(category);
+        return "redirect:/categories";
+    }
+
     @PostMapping("/products/category")
     public String displayProductsByCategory(@RequestParam("categoryId") Long categoryId, Model model) throws Exception {
         Category category = categoryService.fetchById(categoryId);
