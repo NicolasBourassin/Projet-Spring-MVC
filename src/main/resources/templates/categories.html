@@ -28,6 +28,9 @@
 <!--            <button type="submit">Show Products</button>-->
             <button type="submit" class="btn btn-primary">Show Products</button>
           </form>
+          <form th:action="@{'/categories/delete/' + ${category.id}}" method="post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
         </div>
       </div>
     </div>
