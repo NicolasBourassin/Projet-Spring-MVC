@@ -1,6 +1,7 @@
 package com.example.projetspringmvc.service;
 
 import com.example.projetspringmvc.repository.ProductRepository;
+import com.example.projetspringmvc.repository.entity.Category;
 import com.example.projetspringmvc.repository.entity.Product;
 import org.springframework.stereotype.Service;
 
@@ -31,4 +32,7 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    public List<Product> findByCategory(Category category) {
+        return productRepository.findAllByCategory(category);
+    }
 }

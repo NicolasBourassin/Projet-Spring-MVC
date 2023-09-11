@@ -5,6 +5,8 @@ import com.example.projetspringmvc.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -25,6 +27,22 @@ public class ProductController {
             exception.printStackTrace();
         }
         return "products";
+    }
+
+    @GetMapping("/products/add")  // TEST : problem linked to GetMapping necessary ?
+    public String showAddProductForm() {
+        return "add-products";
+    }
+    @PostMapping("/products/add")
+    public String addProduct(@RequestParam("name") String name,
+                             @RequestParam("price") Float price,
+                             @RequestParam("description") String description) {
+        Product product = new Product();
+        product.setName(name);
+        product.setPrice(price);
+        product.setDescription(description);
+        productService.save(product);
+        return "redirect:/products";
     }
 
 }
